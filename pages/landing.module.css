@@ -11,6 +11,9 @@
   display: flex;
   flex-direction: column; /* Default for mobile */
 }
+.footer{
+  height: 250px;
+}
 
 .centeredMenu {
   display: flex;

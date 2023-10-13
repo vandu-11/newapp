@@ -103,7 +103,9 @@ const LoginPage = () => {
             {error && <p className={styles.error}>{error}</p>}
           </div>
         </div>
+        <div className={styles.footer}>
         <Footer/>
+      </div>
       </div>
       
     </>

@@ -203,7 +203,9 @@ function Menu() {
           </li>
         </ul>
       </div>
+      <div className={styles.footer}>
       <Footer />
+      </div>
     </div>
   );
 }

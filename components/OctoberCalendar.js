@@ -3,7 +3,6 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import moment from 'moment';
 import styles from './OctoberCalendar.module.css';
-import Footer from './Footer';
 
 // Use moment.js to localize the calendar
 const localizer = momentLocalizer(moment);
@@ -13,22 +12,26 @@ function OctoberCalendar() {
 
   const eventsData = [
     {
-      start: '2023-10-05T10:00:00', // December is represented by 12
-      end: '2023-12-05T11:00:00',
+      start: new Date(2023, 9, 5, 10, 0),
+      end: new Date(2023, 9, 5, 11, 0),
       title: 'Event 1',
       desc: 'Event 1 details...',
     },
     {
-      start: '2023-10-15T14:00:00',
-      end: '2023-12-15T16:00:00',
+      start: new Date(2023, 9, 15, 14, 0),
+      end: new Date(2023, 9, 15, 16, 0),
       title: 'Event 2',
       desc: 'Event 2 details...',
     },
-    // Add more events with date strings
-  ];
-  
     // Add more events with dates, timings, and text
-  
+  ];
+
+  // Format the timings to include AM and PM
+  const formattedEventsData = eventsData.map((event) => ({
+    ...event,
+    start: moment(event.start).format('YYYY-MM-DD hh:mm A'), // e.g., "2023-10-05 10:00 AM"
+    end: moment(event.end).format('YYYY-MM-DD hh:mm A'),     // e.g., "2023-10-05 11:00 AM"
+  }));
 
   // Handle click events on calendar events
   const handleSelectEvent = (event) => {
@@ -50,9 +53,10 @@ function OctoberCalendar() {
 
   return (
     <div className={styles['calendar-container']}>
+      
       <Calendar
         localizer={localizer}
-        events={eventsData}
+        events={formattedEventsData}
         startAccessor="start"
         endAccessor="end"
         onSelectEvent={handleSelectEvent}
@@ -75,9 +79,6 @@ function OctoberCalendar() {
           <p>{eventDetails}</p>
         </div>
       )}
-      <div>
-        <Footer />
-      </div>
     </div>
   );
 }

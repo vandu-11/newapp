@@ -11,8 +11,11 @@ function Whitefield() {
             
             {/* Content for your component can go here */}
          <div>
-            </div>   
+            </div>  
+            <div className={styles.footer}>
+                
             <Footer/> 
+            </div> 
         </div>
     );
 }
